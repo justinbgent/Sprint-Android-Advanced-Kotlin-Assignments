@@ -29,6 +29,6 @@ fun Context.notification(title: String = "Notification", message:String, notifyI
     notifManager.notify(notifyId, notificationBuilder.build())
 }
 
-fun Context.loadImageUrl(url: String, imageView: ImageView){
-    Glide.with(this).load(url).into(imageView)
+fun ImageView.loadImageUrl(url: String){
+    Glide.with(this.context).load(url).into(this)
 }
