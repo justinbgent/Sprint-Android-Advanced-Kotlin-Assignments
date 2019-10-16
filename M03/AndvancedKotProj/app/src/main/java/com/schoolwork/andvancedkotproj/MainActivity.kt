@@ -1,45 +1,43 @@
 package com.schoolwork.andvancedkotproj
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.recycler_item.view.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val recyclerView by lazy {
+        findViewById<RecyclerView>(R.id.recycler_view)
+    }
+
+    var edmList = mutableListOf<Song>(
+        EDM("Sad Machine"),
+        EDM("Room for Happiness"),
+        EDM("Angel On My Shoulder"),
+        EDM("4AM"),
+        EDM("Atmosphere")
+    )
+
+    var drumAndBaseList = mutableListOf<Song>(
+        DrumAndBase("Freefall"),
+        DrumAndBase("Legacy"),
+        DrumAndBase("Tearing Me Apart"),
+        DrumAndBase("Just A Thought"),
+        DrumAndBase("Night & Day")
+    )
+
+    var dubstepList = mutableListOf<Song>(
+        Dubstep("Finale"),
+        Dubstep("Flight"),
+        Dubstep("Frame of Mind"),
+        Dubstep("Hey Now"),
+        Dubstep("It's Cool")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
-}
 
-fun RecyclerView.startRecyclerView(){
-    this.setHasFixedSize(true)
-    this.layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
-    this.adapter = Recycler()
-}
-
-class Recycler(private var list: MutableList<Genres>): RecyclerView.Adapter<Recycler.ViewHolder>(){
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        val txtView: TextView = view.txt_view
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout. , parent, false)
-        return ViewHolder(view)
-    }
-
-    override fun getItemCount(): Int = list.size
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = list[position]
-        holder.txtView.text = item.name
+        recyclerView.startRecyclerView(dubstepList)
     }
 }

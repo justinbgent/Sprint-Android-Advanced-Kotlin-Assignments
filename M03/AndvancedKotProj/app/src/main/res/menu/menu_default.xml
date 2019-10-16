@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/edm"
+        android:title="EDM" />
+    <item
+        android:id="@+id/dubstep"
+        android:title="Dubstep"/>
+    <item
+        android:id="@+id/drum_and_base"
+        android:title="Drum and Base"/>
+</menu>
