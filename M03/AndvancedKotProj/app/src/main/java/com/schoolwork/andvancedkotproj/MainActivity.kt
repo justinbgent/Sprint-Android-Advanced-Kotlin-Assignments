@@ -12,65 +12,12 @@ class MainActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.recycler_view)
     }
 
-    var edmList = mutableListOf<Song>(
-        EDM("Sad Machine"),
-        EDM("Room for Happiness"),
-        EDM("Angel On My Shoulder"),
-        EDM("4AM"),
-        EDM("Atmosphere"),
-        EDM("Sad Machine"),
-        EDM("Room for Happiness"),
-        EDM("Angel On My Shoulder"),
-        EDM("4AM"),
-        EDM("Atmosphere"),
-        EDM("Sad Machine"),
-        EDM("Room for Happiness"),
-        EDM("Angel On My Shoulder"),
-        EDM("4AM"),
-        EDM("Atmosphere")
-    )
-
-    var drumAndBaseList = mutableListOf<Song>(
-        DrumAndBase("Freefall"),
-        DrumAndBase("Legacy"),
-        DrumAndBase("Tearing Me Apart"),
-        DrumAndBase("Just A Thought"),
-        DrumAndBase("Night & Day"),
-        DrumAndBase("Freefall"),
-        DrumAndBase("Legacy"),
-        DrumAndBase("Tearing Me Apart"),
-        DrumAndBase("Just A Thought"),
-        DrumAndBase("Night & Day"),
-        DrumAndBase("Freefall"),
-        DrumAndBase("Legacy"),
-        DrumAndBase("Tearing Me Apart"),
-        DrumAndBase("Just A Thought"),
-        DrumAndBase("Night & Day")
-    )
-
-    var dubstepList = mutableListOf<Song>(
-        Dubstep("Finale"),
-        Dubstep("Flight"),
-        Dubstep("Frame of Mind"),
-        Dubstep("Hey Now"),
-        Dubstep("It's Cool"),
-        Dubstep("Finale"),
-        Dubstep("Flight"),
-        Dubstep("Frame of Mind"),
-        Dubstep("Hey Now"),
-        Dubstep("It's Cool"),
-        Dubstep("Finale"),
-        Dubstep("Flight"),
-        Dubstep("Frame of Mind"),
-        Dubstep("Hey Now"),
-        Dubstep("It's Cool")
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerView.startRecyclerView(dubstepList)
+        recyclerView.startRecyclerView(Lists.dubstep)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -80,9 +27,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.title){
-            "EDM" -> recyclerView.startRecyclerView(edmList)
-            "Dubstep" -> recyclerView.startRecyclerView(dubstepList)
-            "Drum and Base" -> recyclerView.startRecyclerView(drumAndBaseList)
+            "EDM" -> recyclerView.startRecyclerView(Lists.edm)
+            "Dubstep" -> recyclerView.startRecyclerView(Lists.dubstep)
+            "Drum and Base" -> recyclerView.startRecyclerView(Lists.drumAndBase)
         }
         return super.onOptionsItemSelected(item)
     }
