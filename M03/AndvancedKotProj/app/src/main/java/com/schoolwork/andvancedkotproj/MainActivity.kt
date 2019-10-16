@@ -1,11 +1,13 @@
 package com.schoolwork.andvancedkotproj
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recycler_item.view.*
 
@@ -15,6 +17,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+}
+
+fun RecyclerView.startRecyclerView(){
+    this.setHasFixedSize(true)
+    this.layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
+    this.adapter = Recycler()
 }
 
 class Recycler(private var list: MutableList<Genres>): RecyclerView.Adapter<Recycler.ViewHolder>(){
