@@ -18,20 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var songs: MutableList<Song>
 
     private var listType: Song by Delegates.observable(Dubstep("")) { _, _: Song, new: Song ->
-        when (new) {
-            is EDM -> {
-                songs.clear()
-                songs.addAll(Lists.edm)
-            }
-            is Dubstep -> {
-                songs.clear()
-                songs.addAll(Lists.dubstep)
-            }
-            is DrumAndBase -> {
-                songs.clear()
-                songs.addAll(Lists.drumAndBase)
-            }
-        }
+        Lists.clearAndReplace(songs, new)
         adapter.notifyDataSetChanged()
     }
 
@@ -40,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         songs = mutableListOf()
+        songs.addAll(Lists.edm)
         adapter =  Recycler(songs)
 
         recyclerView.setHasFixedSize(true)

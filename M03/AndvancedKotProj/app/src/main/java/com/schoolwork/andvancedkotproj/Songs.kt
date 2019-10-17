@@ -61,5 +61,20 @@ object Lists{
         Dubstep("It's Cool")
     )
 
-    val songs = mutableListOf<Song>()
+    fun clearAndReplace(list: MutableList<Song>, new: Song){
+        when (new) {
+            is EDM -> {
+                list.clear()
+                list.addAll(edm)
+            }
+            is Dubstep -> {
+                list.clear()
+                list.addAll(dubstep)
+            }
+            is DrumAndBase -> {
+                list.clear()
+                list.addAll(drumAndBase)
+            }
+        }
+    }
 }
