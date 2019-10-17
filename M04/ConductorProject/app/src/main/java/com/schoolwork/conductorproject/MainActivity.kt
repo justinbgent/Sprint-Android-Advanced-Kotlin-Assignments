@@ -13,13 +13,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var router: Router
-    private val container = parent_layout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        router = Conductor.attachRouter(this, container, savedInstanceState)
+        router = Conductor.attachRouter(this, parent_layout, savedInstanceState)
         if (!router.hasRootController()){
             router.setRoot(RouterTransaction.with(RootController()))
         }
