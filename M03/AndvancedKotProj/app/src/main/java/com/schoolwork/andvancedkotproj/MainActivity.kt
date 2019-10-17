@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,12 +14,37 @@ class MainActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.recycler_view)
     }
 
+    private lateinit var adapter: Recycler
+    private lateinit var songs: MutableList<Song>
+
+    private var listType: Song by Delegates.observable(Dubstep("")) { _, _: Song, new: Song ->
+        when (new) {
+            is EDM -> {
+                songs.clear()
+                songs.addAll(Lists.edm)
+            }
+            is Dubstep -> {
+                songs.clear()
+                songs.addAll(Lists.dubstep)
+            }
+            is DrumAndBase -> {
+                songs.clear()
+                songs.addAll(Lists.drumAndBase)
+            }
+        }
+        adapter.notifyDataSetChanged()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerView.startRecyclerView(Lists.dubstep)
+        songs = mutableListOf()
+        adapter =  Recycler(songs)
+
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        recyclerView.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -26,10 +53,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.title){
-            "EDM" -> recyclerView.startRecyclerView(Lists.edm)
-            "Dubstep" -> recyclerView.startRecyclerView(Lists.dubstep)
-            "Drum and Base" -> recyclerView.startRecyclerView(Lists.drumAndBase)
+        when (item.title) {
+            "EDM" -> listType = EDM("EDM")
+            "Dubstep" -> listType = Dubstep("Dubstep")
+            "Drum and Base" -> listType = DrumAndBase("Drum and Base")
         }
         return super.onOptionsItemSelected(item)
     }

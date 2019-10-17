@@ -60,4 +60,6 @@ object Lists{
         Dubstep("Hey Now"),
         Dubstep("It's Cool")
     )
+
+    val songs = mutableListOf<Song>()
 }
