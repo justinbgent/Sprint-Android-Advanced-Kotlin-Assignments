@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/sub_one"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_save_subone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Text To SubTwo"/>
+
+    <EditText
+        android:id="@+id/subone_edit_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
